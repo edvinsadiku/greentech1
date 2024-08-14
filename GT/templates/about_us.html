@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <section id="aboutUs">
+        <hgroup>
+            <h1>ABOUT US</h1>
+            <p>Founded in 2020, Our Company has grown from a small startup to a leading provider of Python development.Founded in 2020, Our Company has grown from a small startup to a leading provider of Python development services.Our journey is marked by innovation, customer saatisfaction, and continuous growth.</p>
+            <br>
+            <p>Our mission is to empower business through cutting-edge Python solutions.Our vision is to be a global leader in Python development, known for our expertise and customer-centric approach.</p>
+        </hgroup>
+
+        <img src="{% static 'assets/img/programmers.png' %}" alt="">
+    </section>
+
+   
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('nav ul.menu a');
+
+        for (const link of links) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        }
+    });
+</script> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('nav ul.menu a');
+
+for (const link of links) {
+link.addEventListener('click', function(event) {
+    const href = this.getAttribute('href');
+
+    if (href.startsWith("#")) { // Only prevent default if link is to an ID on the same page
+        event.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) { // Check if target element exists
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+});
+}
+});
+</script>
+
+<!-- nav -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('nav ul.menu a');
+
+
+const menuToggler = document.querySelector('button.menu-toggler');
+const menu = document.querySelector('ul.menu');
+let menuIsVisible = false;
+
+menuToggler.addEventListener('click', () => {
+    menuIsVisible = !menuIsVisible;
+    menu.style.display = menuIsVisible ? 'block' : 'none';
+    menuToggler.classList.toggle('open');
+});
+
+
+// links.forEach(link => {
+//     link.addEventListener('click', () => {
+//         menu.style.display = 'none';
+//         menuToggler.classList.remove('open');
+//     });
+// });
+
+
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('nav');
+    if (window.scrollY > 0) {
+        navbar.classList.add('sticky');
+    } else {
+        navbar.classList.remove('sticky');
+    }
+});
+});
+</script>
+</script>
+
+<script>
+    const bars = 'fa-bars'
+    const close = 'fa-xmark'
+    const menu_toggler = document.querySelector('button.menu-toggler')
+    const menu_toggler_icon = document.querySelector('button.menu-toggler i')
+    const menu = document.querySelector('ul.menu')
+    let menu_is_visible = false
+
+    menu_toggler_icon.classList.add(bars)
+
+    menu_toggler.addEventListener('click', () => {
+        menu_is_visible = !menu_is_visible
+        menu.style.display = menu_is_visible ? 'block' : 'none'
+        if(menu_is_visible) {
+            menu_toggler_icon.classList.remove(bars)
+            menu_toggler_icon.classList.add(close)
+        } else {
+            menu_toggler_icon.classList.remove(close)
+            menu_toggler_icon.classList.add(bars)
+        }
+    })
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.testimonial');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.display = (i === index) ? 'block' : 'none';
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+document.addEventListener('DOMContentLoaded', () => {
+showSlide(currentSlide);
+});
+
+    // Initialize the first slide
+    items.forEach((item, index) => {
+        item.style.display = index === 0 ? 'flex' : 'none';
+    });
+</script>
+</body>
+</html>
+
+
+{% endblock %}

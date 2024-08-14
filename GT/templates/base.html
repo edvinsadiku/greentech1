@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Green Technologies{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'assets/img/green-logo.svg' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <header id="home">
+        <nav>
+            <div class="hamburger-menu">
+                <img src="{% static 'assets/img/green-logo.svg' %}" height="35px" alt="" class="logo">
+            <button class="menu-toggler">
+                <i class="fa-solid"></i>
+            </button>
+            </div>
+
+            <ul class="menu">
+                <li><a href="{% url 'home' %}"><img src="{% static 'assets/img/green-logo.svg' %}" alt="" height="50px" class="logo2"></a></li>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+
+                <li><a href="{% url 'services' %}">SERVICES</a></li>
+                <li><a href="{% url 'about' %}">ABOUT US</a></li>
+                <li><a href="{% url 'contact' %}">CONTACT</a></li>
+            </ul>
+            
+        </nav>
+    </header>
+
+
+    {% block content %}
+
+    {% endblock %}
+    
+    <footer>
+        <div>
+            
+            <a href="{% url 'home' %}"><img src="{% static 'assets/img/green-logo.svg' %}" alt="" height="45px"></a>
+            <h3 style="padding-top: 20px;">INNOVATIVE PYTHON SOLUTIONS</h3>
+            <p>Leading in Python Development</p>
+
+        </div>
+        <div class="menu2">
+            <h3>Menu</h3>
+            <ul>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+
+                <li><a href="{% url 'services' %}">SERVICES</a></li>
+                <li><a href="{% url 'about' %}">ABOUT US</a></li>
+                <li><a href="{% url 'contact' %}">CONTACT</a></li>
+            </ul>
+        </div>
+        <div class="social">
+            <h3>Social</h3>
+            <a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        </div>
+    </footer>
+
+
+   
+  
+
+    <script>
+        const bars = 'fa-bars';
+        const close = 'fa-xmark';
+        const menu_toggler = document.querySelector('button.menu-toggler');
+        const menu_toggler_icon = document.querySelector('button.menu-toggler i');
+        const menu = document.querySelector('ul.menu');
+        let menu_is_visible = false;
+
+        menu_toggler_icon.classList.add(bars);
+
+        menu_toggler.addEventListener('click', () => {
+            menu_is_visible = !menu_is_visible;
+            menu.style.display = menu_is_visible ? 'block' : 'none';
+            if (menu_is_visible) {
+                menu_toggler_icon.classList.remove(bars);
+                menu_toggler_icon.classList.add(close);
+            } else {
+                menu_toggler_icon.classList.remove(close);
+                menu_toggler_icon.classList.add(bars);
+            }
+        });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = (i === index) ? 'block' : 'none';
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('nav ul.menu a');
+
+            for (const link of links) {
+                link.addEventListener('click', function(event) {
+                    const href = this.getAttribute('href');
+
+                    if (href.startsWith("#")) { // Only prevent default if link is to an ID on the same page
+                        event.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+
+                        if (targetElement) { // Check if target element exists
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- nav -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('nav ul.menu a');
+
+
+    const menuToggler = document.querySelector('button.menu-toggler');
+    const menu = document.querySelector('ul.menu');
+    let menuIsVisible = false;
+
+    menuToggler.addEventListener('click', () => {
+        menuIsVisible = !menuIsVisible;
+        menu.style.display = menuIsVisible ? 'block' : 'none';
+        menuToggler.classList.toggle('open');
+    });
+
+
+    // links.forEach(link => {
+    //     link.addEventListener('click', () => {
+    //         menu.style.display = 'none';
+    //         menuToggler.classList.remove('open');
+    //     });
+    // });
+
+
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('nav');
+        if (window.scrollY > 0) {
+            navbar.classList.add('sticky');
+        } else {
+            navbar.classList.remove('sticky');
+        }
+    });
+});
+    </script>
+</body>
+</html>

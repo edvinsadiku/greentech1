@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+    <section class="services" id="services">
+        <h2>OUR SERVICES</h2>
+        <div class="service-container">
+            <div class="service-card">
+                <div class="webDev">
+                    <img src="{% static 'assets/img/web-dev.png' %}" alt="" class="img1">
+                    <h3>Web Development</h3>
+                    
+                </div>
+                <p>Web development is the process of creating and maintaining websites and web applications. It encompasses several aspects including web design, web programming, database management, and web publishing.</p>
+            </div>
+            <div class="service-card">
+                <div class="webDev">
+                    <img src="{% static 'assets/img/dataAnalysis1.png' %}" alt="" class="img1">
+                    <h3>Data Analysis</h3>
+                </div>
+                <p>Data analysis is the process of cleaning, analyzing, interpreting, and visualizing data using various techniques and business intelligence tools. Data analysis tools help you discover relevant insights that lead to smarter and more effective decision-making.</p>
+            </div>
+            <div class="service-card">
+                <div class="webDev">
+                    <img src="{% static 'assets/img/ai-automation.png' %}" alt="" class="img1">
+                    <h3>AI Automation</h3>
+                    
+                </div>
+                
+                <p>AI automation refers to the use of artificial intelligence to perform tasks that typically require human intelligence. This involves leveraging machine learning, natural language processing, computer vision, and other AI technologies to automate processes, improve efficiency, and reduce the need for manual intervention.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>WHAT OUR CLIENTS SAY</h2>
+        <div class="carousel">
+            <div class="testimonial">
+                <p>"GREEN TECHNOLOGIES provided us with an exceptional Python solution that streamlined our processes and boosted our productivity. Highly recommend!"<strong> - AMBIENTI</strong> </p>
+            </div>
+            <div class="testimonial">
+                <p>"Working with GREEN TECHNOLOGIES was a game-changer. Their expertise in Python is unmatched, and their customer service is top-notch." <strong>- LOCUM TENET</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nostrum sequi doloribus minima facere odit ducimus quos labore quo est." <strong>- Lorum</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque nam veniam fugiat reprehenderit rerum optio saepe illum quos corporis? Maiores!" <strong>- Lorum</strong></p>
+            </div>
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </section>
+
+   
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('nav ul.menu a');
+    
+    for (const link of links) {
+    link.addEventListener('click', function(event) {
+        const href = this.getAttribute('href');
+    
+        if (href.startsWith("#")) { // Only prevent default if link is to an ID on the same page
+            event.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+    
+            if (targetElement) { // Check if target element exists
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+    }
+    });
+    </script>
+    
+    <!-- nav -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('nav ul.menu a');
+    
+    
+    const menuToggler = document.querySelector('button.menu-toggler');
+    const menu = document.querySelector('ul.menu');
+    let menuIsVisible = false;
+    
+    menuToggler.addEventListener('click', () => {
+        menuIsVisible = !menuIsVisible;
+        menu.style.display = menuIsVisible ? 'block' : 'none';
+        menuToggler.classList.toggle('open');
+    });
+    
+    
+    // links.forEach(link => {
+    //     link.addEventListener('click', () => {
+    //         menu.style.display = 'none';
+    //         menuToggler.classList.remove('open');
+    //     });
+    // });
+    
+    
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('nav');
+        if (window.scrollY > 0) {
+            navbar.classList.add('sticky');
+        } else {
+            navbar.classList.remove('sticky');
+        }
+    });
+    });
+    </script>
+    </script>
+
+    <script>
+        const bars = 'fa-bars'
+        const close = 'fa-xmark'
+        const menu_toggler = document.querySelector('button.menu-toggler')
+        const menu_toggler_icon = document.querySelector('button.menu-toggler i')
+        const menu = document.querySelector('ul.menu')
+        let menu_is_visible = false
+
+        menu_toggler_icon.classList.add(bars)
+
+        menu_toggler.addEventListener('click', () => {
+            menu_is_visible = !menu_is_visible
+            menu.style.display = menu_is_visible ? 'block' : 'none'
+            if(menu_is_visible) {
+                menu_toggler_icon.classList.remove(bars)
+                menu_toggler_icon.classList.add(close)
+            } else {
+                menu_toggler_icon.classList.remove(close)
+                menu_toggler_icon.classList.add(bars)
+            }
+        })
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = (i === index) ? 'block' : 'none';
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+document.addEventListener('DOMContentLoaded', () => {
+    showSlide(currentSlide);
+});
+
+        // Initialize the first slide
+        items.forEach((item, index) => {
+            item.style.display = index === 0 ? 'flex' : 'none';
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

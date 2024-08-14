@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <img src="{% static 'assets/img/ai-site-helping-with-software-production.jpg' %}" alt="">
+
+    <div class="text-block">
+        <h4>INNOVATIVE PYTHON <br>SOLUTIONS</h4>
+            <p>Leading in Python Development
+      </div>
+</main>
+
+<section id="aboutUs">
+    <hgroup>
+        <h1>ABOUT US</h1>
+        <p>Founded in 2020, Our Company has grown from a small startup to a leading provider of Python development.Founded in 2020, Our Company has grown from a small startup to a leading provider of Python development services.Our journey is marked by innovation, customer saatisfaction, and continuous growth.</p>
+        <br>
+        <p>Our mission is to empower business through cutting-edge Python solutions.Our vision is to be a global leader in Python development, known for our expertise and customer-centric approach.</p>
+    </hgroup>
+
+    <img src="{% static 'assets/img/programmers.png' %}" alt="">
+
+</section>
+
+<section class="services" id="services">
+    <h2>OUR SERVICES</h2>
+    <div class="service-container">
+        <div class="service-card">
+            <div class="webDev">
+                <img src="{% static 'assets/img/web-dev.png' %}" alt="" class="img1">
+                <h3>Web Development</h3>
+                
+            </div>
+            <p>Web development is the process of creating and maintaining websites and web applications. It encompasses several aspects including web design, web programming, database management, and web publishing.</p>
+        </div>
+        <div class="service-card">
+            <div class="webDev">
+                <img src="{% static 'assets/img/dataAnalysis1.png' %}" alt="" class="img1">
+                
+                
+                <h3>Data Analysis</h3>
+            </div>
+            <p>Data analysis is the process of cleaning, analyzing, interpreting, and visualizing data using various techniques and business intelligence tools. Data analysis tools help you discover relevant insights that lead to smarter and more effective decision-making.</p>
+        </div>
+        <div class="service-card">
+            <div class="webDev">
+                <img src="{% static 'assets/img/ai-automation.png' %}" alt="" class="img1">
+                <h3>AI Automation</h3>
+                
+            </div>
+            
+            <p>AI automation refers to the use of artificial intelligence to perform tasks that typically require human intelligence. This involves leveraging machine learning, natural language processing, computer vision, and other AI technologies to automate processes, improve efficiency, and reduce the need for manual intervention.</p>
+        </div>
+    </div>
+</section>
+
+
+
+    
+<section class="testimonials">
+    <h2>WHAT OUR CLIENTS SAY</h2>
+    <div class="carousel">
+        <div class="testimonial">
+            <p>"GREEN TECHNOLOGIES provided us with an exceptional Python solution that streamlined our processes and boosted our productivity. Highly recommend!"<strong> - AMBIENTI</strong> </p>
+        </div>
+        <div class="testimonial">
+            <p>"Working with GREEN TECHNOLOGIES was a game-changer. Their expertise in Python is unmatched, and their customer service is top-notch." <strong>- LOCUM TENET</strong></p>
+        </div>
+        <div class="testimonial">
+            <p>"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore nostrum sequi doloribus minima facere odit ducimus quos labore quo est." <strong>- Lorum</strong></p>
+        </div>
+        <div class="testimonial">
+            <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque nam veniam fugiat reprehenderit rerum optio saepe illum quos corporis? Maiores!" <strong>- Lorum</strong></p>
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </div>
+</section>
+
+    <!-- Form for creating new service 
+    <div class="container mt-4">
+        <header>
+            <h2>Create New Service</h2>
+        </header>
+        <section>
+            <form method="post" action="{% url 'services' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </section>
+    </div>
+</div>
+-->
+<div>
+<section class="contact" id="contact">
+<h2>Contact Us</h2>
+<form method="post" id="contactForm" action="{% url 'contact' %}">
+    {% csrf_token %}
+    <div class="input-group">
+        <label for="name"></label>
+        <input type="text" name="name" id="name" placeholder="Name" required>
+    </div>
+    <div class="input-group">
+        <label for="email"></label>
+        <input type="email" name="email" id="email" placeholder="Email Address" required>
+    </div>
+    <div class="input-group">
+        <label for="message"></label>
+        <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
+    </div>
+    <input type="submit" value="Send">
+</form>
+</section>
+</div>
+<div class="popup" id="popup">
+<h2>Thank you!</h2>
+<p>Your message has been sent successfully.</p>
+<button onclick="closePopup()">Close</button>
+</div>
+
+<!--
+
+<div id="contact" class="container mt-4">
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+    <section>
+        <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </section>
+</div>
+-->
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+{% endblock %}
